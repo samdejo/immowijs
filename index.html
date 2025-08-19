@@ -93,34 +93,38 @@
         <div>
           <h2 style="margin-top:0;">Doe vandaag nog een bod</h2>
           <p class="lead">We behandelen elk bod snel en discreet. Vul het formulier in en wij nemen binnen 24 uur contact met u op.</p>
-          <p class="lead"><strong>Grijp nu uw kans om Immowijs.be te claimen voordat iemand anders dat doet.</strong></p>
+          <p class="lead"><strong>Grijp nu uw kans om ImmoWijs.be te claimen voordat iemand anders dat doet.</strong></p>
         </div>
-        <div>
-          <form method="POST" action="https://formsubmit.co/sam@cosado.be" novalidate>
-            <input type="hidden" name="_subject" value="Nieuw bericht / bod via Immowijs.be">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="bedankt.html">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <div>
-              <label for="name">Naam</label>
-              <input id="name" name="name" type="text" placeholder="Uw naam" required>
-            </div>
-            <div>
-              <label for="email">E‑mail</label>
-              <input id="email" name="email" type="email" placeholder="naam@bedrijf.be" required>
-            </div>
-            <div class="full">
-              <label for="message">Bericht</label>
-              <textarea id="message" name="message" placeholder="Uw bod, vragen of voorwaarden…" required></textarea>
-            </div>
-            <div class="form-actions full">
-              <button type="submit" class="cta">Verzend bericht</button>
-              <span class="helper">Door te verzenden gaat u akkoord dat wij contact met u opnemen.</span>
-            </div>
-          </form>
-          
-        </div>
+                 <div id="contact-form">
+           <form method="POST" action="https://formsubmit.co/sam@cosado.be" novalidate>
+             <input type="hidden" name="_subject" value="Nieuw bericht / bod via Immowijs.be">
+             <input type="hidden" name="_template" value="table">
+             <input type="hidden" name="_captcha" value="false">
+             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+             <div>
+               <label for="name">Naam</label>
+               <input id="name" name="name" type="text" placeholder="Uw naam" required>
+             </div>
+             <div>
+               <label for="email">E‑mail</label>
+               <input id="email" name="email" type="email" placeholder="naam@bedrijf.be" required>
+             </div>
+             <div class="full">
+               <label for="message">Bericht</label>
+               <textarea id="message" name="message" placeholder="Uw bod, vragen of voorwaarden…" required></textarea>
+             </div>
+             <div class="form-actions full">
+               <button type="submit" class="cta">Verzend bericht</button>
+               <span class="helper">Door te verzenden gaat u akkoord dat wij contact met u opnemen.</span>
+             </div>
+           </form>
+         </div>
+         <div id="success-message" style="display: none; text-align: center; padding: 40px 20px;">
+           <div style="background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; box-shadow: var(--shadow);">
+             <h3 style="margin: 0 0 12px; color: var(--brand); font-size: 20px;">✓ Bericht verzonden</h3>
+             <p style="margin: 0; color: var(--muted); line-height: 1.6;">Uw bericht is succesvol verzonden. We nemen binnen 24 uur contact met u op.</p>
+           </div>
+         </div>
       </div>
     </section>
   </main>
@@ -132,8 +136,20 @@
       </div>
     </div>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+     <script>
+     document.getElementById('year').textContent = new Date().getFullYear();
+     
+     // Handle form submission
+     document.querySelector('form').addEventListener('submit', function(e) {
+       e.preventDefault();
+       
+       // Hide form and show success message
+       document.getElementById('contact-form').style.display = 'none';
+       document.getElementById('success-message').style.display = 'block';
+       
+       // Optional: Scroll to success message
+       document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+     });
+   </script>
 </body>
 </html>
